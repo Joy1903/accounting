@@ -37,7 +37,7 @@
             this.delete_category = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.categories_table)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,16 +145,17 @@
             this.panel1.Size = new System.Drawing.Size(490, 10);
             this.panel1.TabIndex = 18;
             // 
-            // button3
+            // save
             // 
-            this.button3.AutoSize = true;
-            this.button3.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(368, 80);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(132, 30);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Change category";
-            this.button3.UseVisualStyleBackColor = true;
+            this.save.AutoSize = true;
+            this.save.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.save.Location = new System.Drawing.Point(368, 80);
+            this.save.Name = "save";
+            this.save.Size = new System.Drawing.Size(132, 30);
+            this.save.TabIndex = 19;
+            this.save.Text = "Save Changes";
+            this.save.UseVisualStyleBackColor = true;
+            this.save.Click += new System.EventHandler(this.save_Click);
             // 
             // add_category
             // 
@@ -162,7 +163,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(512, 450);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.save);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.delete_category);
             this.Controls.Add(this.combo_to_delete);
@@ -193,6 +194,6 @@
         private System.Windows.Forms.Button delete_category;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button save;
     }
 }

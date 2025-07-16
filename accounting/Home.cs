@@ -52,7 +52,7 @@ namespace accounting
             DataRow allRow = categories.NewRow();
             allRow["category_title"] = "Все категории";
             allRow["category_id"] = -1;
-            allRow["Type"] = "Расход";
+            allRow["category_type"] = "Расход";
             categories.Rows.InsertAt(allRow, 0);
             
             category.DataSource = categories;

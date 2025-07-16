@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,7 @@ namespace accounting
             if (dt != null)
             {
                 this.dt = dt;
+                this.dt.Columns["category_id"].ReadOnly = true;
             }
             else
             {
@@ -127,6 +129,22 @@ namespace accounting
             this.Hide();
             Home home = new Home(this.login);
             home.Show();
+        }
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            myDB db = new myDB();
+            categories_table.EndEdit(); // важно
+
+            var table = categories_table.DataSource as DataTable;
+            if (db.UpdateCategories(table))
+            {
+                this.add_category_Load(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong, try later pls");
+            }
         }
     }
 }
