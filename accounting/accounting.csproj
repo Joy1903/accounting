@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="add_category.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_category.Designer.cs">
+      <DependentUpon>add_category.cs</DependentUpon>
+    </Compile>
     <Compile Include="add_transaction.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     <Compile Include="registration.Designer.cs">
       <DependentUpon>registration.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="add_category.resx">
+      <DependentUpon>add_category.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="add_transaction.resx">
       <DependentUpon>add_transaction.cs</DependentUpon>
     </EmbeddedResource>

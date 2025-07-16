@@ -51,7 +51,8 @@ namespace accounting
             if (categories == null) { MessageBox.Show("Something went wrong, try later"); Application.Exit(); }
             DataRow allRow = categories.NewRow();
             allRow["category_title"] = "Все категории";
-            allRow["category_id"] = -1; // или null, если допустимо
+            allRow["category_id"] = -1;
+            allRow["Type"] = "Расход";
             categories.Rows.InsertAt(allRow, 0);
             
             category.DataSource = categories;
@@ -131,6 +132,12 @@ namespace accounting
             }
             MessageBox.Show("There is not transaction with this category");
         }
-           
+
+        private void add_category_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            add_category ac = new add_category(this.login);
+            ac.Show();
+        }
     }
 }

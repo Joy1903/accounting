@@ -117,7 +117,7 @@ namespace accounting
         public DataTable getCategories() { 
             myDB db = new myDB();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlCommand command = new MySqlCommand("SELECT category_id, category_title FROM `categories`", db.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT category_id, category_title, CASE WHEN category_type = 1 THEN 'Доход' WHEN category_type = 0 THEN 'Расход' END AS Type FROM `categories`", db.getConnection());
             db.openConnection();
             MySqlDataReader reader = command.ExecuteReader();
             DataTable dt = new DataTable();
@@ -175,6 +175,49 @@ namespace accounting
                 return dt;
             }
             return null;
+        }
+        public bool check_category(string category)
+        {
+            myDB db = new myDB();
+            DataTable dt = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `categories` WHERE `category_title` = @CT", db.getConnection());
+            command.Parameters.Add("@CT", MySqlDbType.VarChar).Value = category;
+            adapter.SelectCommand = command;
+            adapter.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+                return true;
+            else
+                return false;
+
+        }
+        public bool InsertCategory(string category_title, bool type)
+        {
+            myDB db = new myDB();
+            MySqlCommand command = new MySqlCommand("INSERT INTO `categories` (`category_id`, `category_title`, `category_type`) VALUES (NULL, @CT, @T);", db.getConnection());
+            command.Parameters.Add("@CT", MySqlDbType.VarChar).Value = category_title;
+            command.Parameters.Add("@T", MySqlDbType.Int64).Value = type;
+            
+            db.openConnection();
+            int answer = command.ExecuteNonQuery();
+            db.closeConnection();
+            if (answer == 1)
+                return true;
+            return false;
+        }
+        public bool deleteCategory(int category_id)
+        {
+            myDB db = new myDB();
+            MySqlCommand command = new MySqlCommand("DELETE FROM `categories` WHERE `category_id` = @CI", db.getConnection());
+            command.Parameters.Add("@CI", MySqlDbType.Int64).Value = category_id;
+
+            db.openConnection();
+            int answer = command.ExecuteNonQuery();
+            db.closeConnection();
+            if (answer == 1)
+                return true;
+            return false;
         }
     }
 

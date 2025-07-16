@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.main_form = new System.Windows.Forms.Button();
             this.date = new System.Windows.Forms.DateTimePicker();
             this.category = new System.Windows.Forms.ComboBox();
             this.Comment = new System.Windows.Forms.TextBox();
             this.tottal_sum = new System.Windows.Forms.TextBox();
             this.Add = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.main_form = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -70,6 +70,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(460, 372);
             this.panel1.TabIndex = 2;
+            // 
+            // main_form
+            // 
+            this.main_form.AutoSize = true;
+            this.main_form.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_form.Location = new System.Drawing.Point(3, 3);
+            this.main_form.Name = "main_form";
+            this.main_form.Size = new System.Drawing.Size(127, 30);
+            this.main_form.TabIndex = 10;
+            this.main_form.Text = "Back Home";
+            this.main_form.UseVisualStyleBackColor = true;
+            this.main_form.Click += new System.EventHandler(this.main_form_Click);
             // 
             // date
             // 
@@ -123,18 +135,6 @@
             this.Add.Text = "Add transaction";
             this.Add.UseVisualStyleBackColor = true;
             this.Add.Click += new System.EventHandler(this.Add_Click);
-            // 
-            // main_form
-            // 
-            this.main_form.AutoSize = true;
-            this.main_form.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.main_form.Location = new System.Drawing.Point(3, 3);
-            this.main_form.Name = "main_form";
-            this.main_form.Size = new System.Drawing.Size(127, 30);
-            this.main_form.TabIndex = 10;
-            this.main_form.Text = "Back Home";
-            this.main_form.UseVisualStyleBackColor = true;
-            this.main_form.Click += new System.EventHandler(this.main_form_Click);
             // 
             // add_transaction
             // 
