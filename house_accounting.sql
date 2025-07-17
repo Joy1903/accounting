@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 15, 2025 at 09:57 AM
+-- Generation Time: Jul 17, 2025 at 08:09 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.3.1
 
@@ -38,13 +38,13 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`category_id`, `category_title`, `category_type`) VALUES
-(1, 'Заработная плата', 1),
-(2, 'Иные Доходы', 1),
-(3, 'Продукты питания', 0),
-(4, 'Транспорт', 0),
 (5, 'Мобильная связь', 0),
-(6, 'Интернет', 0),
-(7, 'Развлечения', 0);
+(7, 'Развлечения', 0),
+(9, 'Заработная плата', 1),
+(10, 'Обучение', 0),
+(12, 'Камуналка', 0),
+(13, 'Не запланированные покупки', 0),
+(14, 'Инные доходы', 1);
 
 -- --------------------------------------------------------
 
@@ -67,12 +67,10 @@ CREATE TABLE `transactions` (
 
 INSERT INTO `transactions` (`transaction_id`, `user_id`, `category_id`, `total_sum`, `date`, `comment`) VALUES
 (1, 7, 5, '50000', '2025-07-13', 'Мобильный интернет на месяц'),
-(2, 1, 3, '20000', '2025-07-14', 'На щоколадку'),
-(4, 7, 4, '20000', '2025-07-14', 'Comment'),
-(5, 2, 1, '6000000', '2025-07-01', 'Ура зп пришла '),
 (6, 7, 7, '30000', '2025-07-12', 'хз сигареты купил'),
-(7, 8, 3, '4000', '2025-07-14', 'Сигареты 2 штуки'),
-(8, 9, 4, '264000', '2025-07-13', 'Замена масла');
+(10, 7, 13, '50000', '2025-07-17', 'Игрушка для племяника'),
+(11, 7, 9, '6000000', '2025-07-17', 'Аванс пришёл'),
+(12, 10, 14, '3000000', '2025-07-17', 'Аванс пришёл');
 
 -- --------------------------------------------------------
 
@@ -96,7 +94,8 @@ INSERT INTO `users` (`user_id`, `login`, `Password`, `full_name`) VALUES
 (2, 'Mike19', 'Qwerty123', 'Mike Smith'),
 (7, 'David1', 'Qwerty', 'David'),
 (8, 'Aziz1', '1111', 'Aziz_Musaev'),
-(9, 'Rustamov', '12345', 'Shohruh');
+(9, 'Rustamov', '12345', 'Shohruh'),
+(10, 'Inno', 'resonance', 'Danil');
 
 --
 -- Indexes for dumped tables
@@ -131,19 +130,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -153,8 +152,8 @@ ALTER TABLE `users`
 -- Constraints for table `transactions`
 --
 ALTER TABLE `transactions`
-  ADD CONSTRAINT `category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`),
-  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
